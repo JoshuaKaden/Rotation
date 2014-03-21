@@ -22,6 +22,8 @@
 		93F3CA1B18DCF7A3008EB72F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F3C9FA18DCF7A3008EB72F /* UIKit.framework */; };
 		93F3CA2318DCF7A3008EB72F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93F3CA2118DCF7A3008EB72F /* InfoPlist.strings */; };
 		93F3CA2518DCF7A3008EB72F /* RotationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F3CA2418DCF7A3008EB72F /* RotationTests.m */; };
+		93F3CA3018DCF7F8008EB72F /* JSKEarthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F3CA2F18DCF7F8008EB72F /* JSKEarthView.m */; };
+		93F3CA3318DCF80A008EB72F /* JSKLunarOrbitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F3CA3218DCF80A008EB72F /* JSKLunarOrbitView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		93F3CA2018DCF7A3008EB72F /* RotationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RotationTests-Info.plist"; sourceTree = "<group>"; };
 		93F3CA2218DCF7A3008EB72F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93F3CA2418DCF7A3008EB72F /* RotationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotationTests.m; sourceTree = "<group>"; };
+		93F3CA2E18DCF7F8008EB72F /* JSKEarthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKEarthView.h; sourceTree = "<group>"; };
+		93F3CA2F18DCF7F8008EB72F /* JSKEarthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKEarthView.m; sourceTree = "<group>"; };
+		93F3CA3118DCF80A008EB72F /* JSKLunarOrbitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKLunarOrbitView.h; sourceTree = "<group>"; };
+		93F3CA3218DCF80A008EB72F /* JSKLunarOrbitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKLunarOrbitView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,10 @@
 				93F3CA0F18DCF7A3008EB72F /* JSKViewController.m */,
 				93F3CA1118DCF7A3008EB72F /* Images.xcassets */,
 				93F3C9FD18DCF7A3008EB72F /* Supporting Files */,
+				93F3CA2E18DCF7F8008EB72F /* JSKEarthView.h */,
+				93F3CA2F18DCF7F8008EB72F /* JSKEarthView.m */,
+				93F3CA3118DCF80A008EB72F /* JSKLunarOrbitView.h */,
+				93F3CA3218DCF80A008EB72F /* JSKLunarOrbitView.m */,
 			);
 			path = Rotation;
 			sourceTree = "<group>";
@@ -254,6 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F3CA3018DCF7F8008EB72F /* JSKEarthView.m in Sources */,
+				93F3CA3318DCF80A008EB72F /* JSKLunarOrbitView.m in Sources */,
 				93F3CA0318DCF7A3008EB72F /* main.m in Sources */,
 				93F3CA1018DCF7A3008EB72F /* JSKViewController.m in Sources */,
 				93F3CA0718DCF7A3008EB72F /* JSKAppDelegate.m in Sources */,
@@ -394,6 +406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rotation/Rotation-Prefix.pch";
 				INFOPLIST_FILE = "Rotation/Rotation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -407,6 +420,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rotation/Rotation-Prefix.pch";
 				INFOPLIST_FILE = "Rotation/Rotation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
