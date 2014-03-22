@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93B7EEBD18DD597200ACF240 /* JSKSunView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B7EEBC18DD597200ACF240 /* JSKSunView.m */; };
+		93B7EEC018DD599700ACF240 /* JSKSolarOrbitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B7EEBF18DD599700ACF240 /* JSKSolarOrbitView.m */; };
 		93F3C9F718DCF7A3008EB72F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F3C9F618DCF7A3008EB72F /* Foundation.framework */; };
 		93F3C9F918DCF7A3008EB72F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F3C9F818DCF7A3008EB72F /* CoreGraphics.framework */; };
 		93F3C9FB18DCF7A3008EB72F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F3C9FA18DCF7A3008EB72F /* UIKit.framework */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93B7EEBB18DD597200ACF240 /* JSKSunView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKSunView.h; sourceTree = "<group>"; };
+		93B7EEBC18DD597200ACF240 /* JSKSunView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKSunView.m; sourceTree = "<group>"; };
+		93B7EEBE18DD599700ACF240 /* JSKSolarOrbitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKSolarOrbitView.h; sourceTree = "<group>"; };
+		93B7EEBF18DD599700ACF240 /* JSKSolarOrbitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKSolarOrbitView.m; sourceTree = "<group>"; };
 		93F3C9F318DCF7A3008EB72F /* Rotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F3C9F618DCF7A3008EB72F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93F3C9F818DCF7A3008EB72F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +93,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93B7EEB918DD58A800ACF240 /* Orbit Views */ = {
+			isa = PBXGroup;
+			children = (
+				93F3CA2E18DCF7F8008EB72F /* JSKEarthView.h */,
+				93F3CA2F18DCF7F8008EB72F /* JSKEarthView.m */,
+				93F3CA3118DCF80A008EB72F /* JSKLunarOrbitView.h */,
+				93F3CA3218DCF80A008EB72F /* JSKLunarOrbitView.m */,
+				93B7EEBB18DD597200ACF240 /* JSKSunView.h */,
+				93B7EEBC18DD597200ACF240 /* JSKSunView.m */,
+				93B7EEBE18DD599700ACF240 /* JSKSolarOrbitView.h */,
+				93B7EEBF18DD599700ACF240 /* JSKSolarOrbitView.m */,
+			);
+			name = "Orbit Views";
+			sourceTree = "<group>";
+		};
 		93F3C9EA18DCF7A3008EB72F = {
 			isa = PBXGroup;
 			children = (
@@ -127,11 +148,8 @@
 				93F3CA0E18DCF7A3008EB72F /* JSKViewController.h */,
 				93F3CA0F18DCF7A3008EB72F /* JSKViewController.m */,
 				93F3CA1118DCF7A3008EB72F /* Images.xcassets */,
+				93B7EEB918DD58A800ACF240 /* Orbit Views */,
 				93F3C9FD18DCF7A3008EB72F /* Supporting Files */,
-				93F3CA2E18DCF7F8008EB72F /* JSKEarthView.h */,
-				93F3CA2F18DCF7F8008EB72F /* JSKEarthView.m */,
-				93F3CA3118DCF80A008EB72F /* JSKLunarOrbitView.h */,
-				93F3CA3218DCF80A008EB72F /* JSKLunarOrbitView.m */,
 			);
 			path = Rotation;
 			sourceTree = "<group>";
@@ -264,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B7EEBD18DD597200ACF240 /* JSKSunView.m in Sources */,
+				93B7EEC018DD599700ACF240 /* JSKSolarOrbitView.m in Sources */,
 				93F3CA3018DCF7F8008EB72F /* JSKEarthView.m in Sources */,
 				93F3CA3318DCF80A008EB72F /* JSKLunarOrbitView.m in Sources */,
 				93F3CA0318DCF7A3008EB72F /* main.m in Sources */,
@@ -485,6 +505,7 @@
 				93F3CA2A18DCF7A3008EB72F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93F3CA2B18DCF7A3008EB72F /* Build configuration list for PBXNativeTarget "RotationTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +514,7 @@
 				93F3CA2D18DCF7A3008EB72F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
