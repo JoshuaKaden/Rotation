@@ -10,4 +10,6 @@
 
 @interface JSKSolarOrbitView : UIView
 
+@property (nonatomic, assign) CGFloat rotationDuration;
+
 @end

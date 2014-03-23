@@ -8,17 +8,15 @@
 
 #import "JSKViewController.h"
 
-#import "JSKEarthView.h"
-#import "JSKLunarOrbitView.h"
+#import "JSKEarthMoonView.h"
+#import "JSKSunEarthMoonView.h"
 
 @interface JSKViewController () {
     UIView *_contentView;
-    UIView *_earthMoonView;
-    UIView *_sunEarthMoonView;
+    JSKEarthMoonView *_earthMoonView;
+    JSKSunEarthMoonView *_sunEarthMoonView;
 }
 
-- (void)constructEarthMoonView;
-- (void)constructSunEarthMoonView;
 - (void)doubleTap:(id)sender;
 
 @end
@@ -43,8 +41,23 @@
         t_view;
     });
     
-    [self constructEarthMoonView];
-    [self constructSunEarthMoonView];
+    _earthMoonView = ({
+        JSKEarthMoonView *t_view = [[JSKEarthMoonView alloc] initWithFrame:CGRectMake(0.0, 0.0, 230, 230)];
+        t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+        t_view.backgroundColor = [UIColor clearColor];
+        t_view.center = CGPointMake(CGRectGetMidX(_contentView.bounds), CGRectGetMidY(_contentView.bounds));
+        [_contentView addSubview:t_view];
+        t_view;
+    });
+
+    _sunEarthMoonView = ({
+        JSKSunEarthMoonView *t_view = [[JSKSunEarthMoonView alloc] initWithFrame:_contentView.bounds];
+        t_view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        t_view.backgroundColor = [UIColor clearColor];
+        t_view.alpha = 0.0;
+        [_contentView addSubview:t_view];
+        t_view;
+    });
     
     UITapGestureRecognizer *t_gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     t_gesture.numberOfTapsRequired = 2;
@@ -57,40 +70,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)constructEarthMoonView
-{
-    _earthMoonView = ({
-        UIView *t_view = [[UIView alloc] initWithFrame:_contentView.bounds];
-        t_view.backgroundColor = [UIColor clearColor];
-        t_view.alpha = 0.0;
-        [_contentView addSubview:t_view];
-        t_view;
-    });
-    
-    JSKEarthView *t_earthView = ({
-        CGRect t_frame = CGRectMake(0.0, 0.0, 60, 60);
-        JSKEarthView *t_view = [[JSKEarthView alloc] initWithFrame:t_frame];
-        t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-        t_view.center = CGPointMake(CGRectGetMidX(_earthMoonView.bounds), CGRectGetMidY(_earthMoonView.bounds));
-        t_view;
-    });
-    [_earthMoonView addSubview:t_earthView];
-    
-    JSKLunarOrbitView *t_lunarOrbitView = ({
-        CGRect t_frame = CGRectMake(0.0, 0.0, 200, 200);
-        JSKLunarOrbitView *t_view = [[JSKLunarOrbitView alloc] initWithFrame:t_frame];
-        t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-        t_view.center = t_earthView.center;
-        t_view;
-    });
-    [_earthMoonView addSubview:t_lunarOrbitView];
-}
-
-- (void)constructSunEarthMoonView
-{
-    
-}
-
 - (void)doubleTap:(UIGestureRecognizer *)sender
 {
     UIView *t_hideView = _earthMoonView;
@@ -100,10 +79,10 @@
         t_showView = _earthMoonView;
     }
     
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
         t_hideView.alpha = 0.0;
     } completion:^(BOOL finished){
-        [UIView animateWithDuration:1.0 animations:^{
+        [UIView animateWithDuration:0.4 animations:^{
             t_showView.alpha = 1.0;
         } completion:^(BOOL finished){
             [self.view setNeedsDisplay];

@@ -34,7 +34,7 @@
 {
     // Drawing code
     CGFloat t_lineWidth = 1.0;
-    CGFloat t_moonRadius = 15.0;
+    CGFloat t_moonRadius = self.bounds.size.width / 15;
     
     // The orbit circle.
     CGRect t_frame = CGRectMake(t_lineWidth + t_moonRadius, t_lineWidth + t_moonRadius, self.bounds.size.width - (t_lineWidth * 2) - (t_moonRadius * 2), self.bounds.size.height - (t_lineWidth * 2) - (t_moonRadius * 2));
