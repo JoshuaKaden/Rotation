@@ -8,9 +8,14 @@
 
 #import "JSKEarthView.h"
 
-@interface JSKEarthView ()
+@interface JSKEarthView () {
+    id _backgroundObserver;
+    id _foregroundObserver;
+}
 
-- (void)addAnimation;
+@property (nonatomic, strong) CAAnimation *animation;
+
+- (void)startAnimating;
 
 @end
 
@@ -23,7 +28,23 @@
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
         self.rotationDuration = 1;
-        [self addAnimation];
+        
+        NSNotificationCenter *t_center = [NSNotificationCenter defaultCenter];
+        _backgroundObserver = [t_center addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note){
+            // Many thanks to cclogg's answer to http://stackoverflow.com/questions/7568567/restoring-animation-where-it-left-off-when-app-resumes-from-background?rq=1
+            self.animation = [self.layer animationForKey:@"rotationAnimation"];
+            [self pauseLayer:self.layer];
+        }];
+        
+        _foregroundObserver = [t_center addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note){
+            if (self.animation) {
+                [self.layer addAnimation:self.animation forKey:@"rotationAnimation"];
+                self.animation = nil;
+            }
+            [self resumeLayer:self.layer];
+        }];
+        
+        [self startAnimating];
     }
     return self;
 }
@@ -47,16 +68,47 @@
     [t_path stroke];
 }
 
-- (void)addAnimation
+- (void)dealloc
 {
-    CABasicAnimation *t_animation;
-    t_animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    t_animation.toValue = [NSNumber numberWithFloat: M_PI * -2.0];
-    t_animation.duration = self.rotationDuration;
-    t_animation.cumulative = YES;
-    t_animation.repeatCount = HUGE_VALF;
+    [[NSNotificationCenter defaultCenter] removeObserver:_backgroundObserver];
+    [[NSNotificationCenter defaultCenter] removeObserver:_foregroundObserver];
+}
+
+- (void)startAnimating
+{
+    if (!self.animation) {
+        self.animation = ({
+            CABasicAnimation *t_animation;
+            t_animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+            t_animation.toValue = [NSNumber numberWithFloat: M_PI * -2.0];
+            t_animation.duration = self.rotationDuration;
+            t_animation.cumulative = YES;
+            t_animation.repeatCount = HUGE_VALF;
+            t_animation;
+        });
+    }
     
-    [self.layer addAnimation:t_animation forKey:@"rotationAnimation"];
+    [self.layer addAnimation:self.animation forKey:@"rotationAnimation"];
+}
+
+#pragma mark - Animation Pause and Resume
+// These methods are from https://developer.apple.com/library/ios/qa/qa1673/_index.html
+
+-(void)pauseLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = pausedTime;
+}
+
+-(void)resumeLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer timeOffset];
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    layer.beginTime = timeSincePause;
 }
 
 @end

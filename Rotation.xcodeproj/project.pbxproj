@@ -99,23 +99,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		93B7EEB918DD58A800ACF240 /* Orbit Views */ = {
+		934A1D5A18DF2B3600732EC7 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				93F3CA2E18DCF7F8008EB72F /* JSKEarthView.h */,
 				93F3CA2F18DCF7F8008EB72F /* JSKEarthView.m */,
 				93F3CA3118DCF80A008EB72F /* JSKLunarOrbitView.h */,
 				93F3CA3218DCF80A008EB72F /* JSKLunarOrbitView.m */,
-				93B7EEBB18DD597200ACF240 /* JSKSunView.h */,
-				93B7EEBC18DD597200ACF240 /* JSKSunView.m */,
 				93B7EEBE18DD599700ACF240 /* JSKSolarOrbitView.h */,
 				93B7EEBF18DD599700ACF240 /* JSKSolarOrbitView.m */,
+				93B7EEBB18DD597200ACF240 /* JSKSunView.h */,
+				93B7EEBC18DD597200ACF240 /* JSKSunView.m */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		93B7EEB918DD58A800ACF240 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				934A1D5418DF181A00732EC7 /* JSKEarthMoonView.h */,
 				934A1D5518DF181A00732EC7 /* JSKEarthMoonView.m */,
 				934A1D5718DF19A700732EC7 /* JSKSunEarthMoonView.h */,
 				934A1D5818DF19A700732EC7 /* JSKSunEarthMoonView.m */,
+				934A1D5A18DF2B3600732EC7 /* Support */,
 			);
-			name = "Orbit Views";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		93F3C9EA18DCF7A3008EB72F = {
@@ -158,7 +166,7 @@
 				93F3CA0E18DCF7A3008EB72F /* JSKViewController.h */,
 				93F3CA0F18DCF7A3008EB72F /* JSKViewController.m */,
 				93F3CA1118DCF7A3008EB72F /* Images.xcassets */,
-				93B7EEB918DD58A800ACF240 /* Orbit Views */,
+				93B7EEB918DD58A800ACF240 /* Views */,
 				93F3C9FD18DCF7A3008EB72F /* Supporting Files */,
 			);
 			path = Rotation;
