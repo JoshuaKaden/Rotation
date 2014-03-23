@@ -53,8 +53,9 @@
 {
     // Drawing code
     CGFloat t_lineWidth = 1.0;
+    CGFloat t_diameter = self.bounds.size.width - (t_lineWidth * 2);
     
-    CGRect t_frame = CGRectMake(self.bounds.origin.x + t_lineWidth, self.bounds.origin.y + t_lineWidth, self.bounds.size.width - (t_lineWidth * 2), self.bounds.size.height - (t_lineWidth * 2));
+    CGRect t_frame = CGRectMake(t_lineWidth, t_lineWidth, t_diameter, t_diameter);
     UIBezierPath *t_path = [UIBezierPath bezierPathWithOvalInRect:t_frame];
     t_path.lineWidth = t_lineWidth;
     [[UIColor blackColor] setStroke];

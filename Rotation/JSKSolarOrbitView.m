@@ -43,7 +43,7 @@
         
         // The earth and moon.
         _earthMoonView = ({
-            CGRect t_frame = CGRectMake(_lineWidth, CGRectGetMidY(self.bounds) - t_earthRadius * 2, t_earthRadius * 4, t_earthRadius * 4);
+            CGRect t_frame = CGRectMake(_orbitFrame.origin.x - (t_earthRadius * 2), CGRectGetMidY(self.bounds) - (t_earthRadius * 2), t_earthRadius * 4, t_earthRadius * 4);
             JSKEarthMoonView *t_view = [[JSKEarthMoonView alloc] initWithFrame:t_frame];
             t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
             t_view.backgroundColor = [UIColor clearColor];

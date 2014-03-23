@@ -18,6 +18,8 @@
     JSKEarthMoonView *_earthMoonView;
 }
 
+- (BOOL)isPad;
+
 @end
 
 @implementation JSKSunEarthMoonView
@@ -28,17 +30,22 @@
     if (self) {
         // Initialization code
         
-        _sunView = ({
-            CGRect t_frame = CGRectMake(0.0, 0.0, 100, 100);
-            JSKSunView *t_view = [[JSKSunView alloc] initWithFrame:t_frame];
+        _solarOrbitView = ({
+            CGRect t_frame = CGRectMake(0.0, 0.0, 400.0, 400.0);
+            if (![self isPad])
+                t_frame = CGRectMake(0.0, 0.0, 220, 220);
+            JSKSolarOrbitView *t_view = [[JSKSolarOrbitView alloc] initWithFrame:t_frame];
             t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
             t_view.center = self.center;
             [self addSubview:t_view];
             t_view;
         });
-
-        _solarOrbitView = ({
-            JSKSolarOrbitView *t_view = [[JSKSolarOrbitView alloc] initWithFrame:CGRectMake(0.0, 0.0, 400, 400)];
+        
+        _sunView = ({
+            CGRect t_frame = CGRectMake(0.0, 0.0, 100, 100);
+            if (![self isPad])
+                t_frame = CGRectMake(0.0, 0.0, 70, 70);
+            JSKSunView *t_view = [[JSKSunView alloc] initWithFrame:t_frame];
             t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
             t_view.center = self.center;
             [self addSubview:t_view];
@@ -49,13 +56,12 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (BOOL)isPad {
+#ifdef UI_USER_INTERFACE_IDIOM
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+#else
+    return NO;
+#endif
 }
-*/
 
 @end

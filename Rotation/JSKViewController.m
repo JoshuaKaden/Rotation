@@ -15,9 +15,15 @@
     UIView *_contentView;
     JSKEarthMoonView *_earthMoonView;
     JSKSunEarthMoonView *_sunEarthMoonView;
+    UILabel *_captionLabel;
 }
 
+- (void)tap:(id)sender;
 - (void)doubleTap:(id)sender;
+
+- (void)toggleCaption;
+
+- (NSString *)buildCaptionString;
 
 @end
 
@@ -59,9 +65,27 @@
         t_view;
     });
     
-    UITapGestureRecognizer *t_gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    t_gesture.numberOfTapsRequired = 2;
-    [self.view addGestureRecognizer:t_gesture];
+    _captionLabel = ({
+        UILabel *t_label = [[UILabel alloc] init];
+        t_label.font = [UIFont fontWithName:@"GillSans" size:14];
+        t_label.textColor = [UIColor blackColor];
+        t_label.text = [self buildCaptionString];
+        CGSize t_size = [t_label sizeThatFits:CGSizeMake(_contentView.bounds.size.width, _contentView.bounds.size.width)];
+        t_label.frame = CGRectMake(15, CGRectGetMaxY(_contentView.bounds) - t_size.height - 10, _contentView.bounds.size.width, t_size.height);
+        t_label.alpha = 0.0;
+        t_label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        t_label.numberOfLines = 0;
+        [_contentView addSubview:t_label];
+        t_label;
+    });
+    
+    UITapGestureRecognizer *t_doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    t_doubleTap.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:t_doubleTap];
+    
+    UITapGestureRecognizer *t_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [t_tap requireGestureRecognizerToFail:t_doubleTap];
+    [self.view addGestureRecognizer:t_tap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +94,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)doubleTap:(UIGestureRecognizer *)sender
+- (void)tap:(UIGestureRecognizer *)sender
+{
+//    CGPoint t_location = [sender locationInView:self.view];
+//    if (t_location.y >= CGRectGetMidY(self.view.frame))
+        [self toggleCaption];
+}
+
+- (void)doubleTap:(__unused id)sender
 {
     UIView *t_hideView = _earthMoonView;
     UIView *t_showView = _sunEarthMoonView;
@@ -79,15 +110,46 @@
         t_showView = _earthMoonView;
     }
     
+    BOOL t_captionIsVisible = NO;
+    if (_captionLabel.alpha == 1.0)
+        t_captionIsVisible = YES;
+    
     [UIView animateWithDuration:0.4 animations:^{
         t_hideView.alpha = 0.0;
+        if (t_captionIsVisible)
+            _captionLabel.alpha = 0.0;
     } completion:^(BOOL finished){
         [UIView animateWithDuration:0.4 animations:^{
             t_showView.alpha = 1.0;
+            
+            _captionLabel.text = [self buildCaptionString];
+            CGSize t_size = [_captionLabel sizeThatFits:CGSizeMake(_contentView.bounds.size.width, _contentView.bounds.size.width)];
+            _captionLabel.frame = CGRectMake(15, CGRectGetMaxY(_contentView.bounds) - t_size.height - 10, _contentView.bounds.size.width, t_size.height);
+            
+            if (t_captionIsVisible)
+                _captionLabel.alpha = 1.0;
         } completion:^(BOOL finished){
             [self.view setNeedsDisplay];
         }];
     }];
+}
+
+- (void)toggleCaption
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        if (_captionLabel.alpha == 0.0)
+            _captionLabel.alpha = 1.0;
+        else
+            _captionLabel.alpha = 0.0;
+    }];
+}
+
+- (NSString *)buildCaptionString
+{
+    if (_earthMoonView.alpha == 0.0)
+        return NSLocalizedString(@"The Moon orbits the Earth.\nThe Earth orbits the Sun.", @"caption");
+    else
+        return NSLocalizedString(@"The Moon orbits the Earth.", @"caption");
 }
 
 @end
