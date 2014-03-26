@@ -27,7 +27,7 @@
         // Initialization code
         
         _earthView = ({
-            CGFloat t_diameter = self.bounds.size.width / 3;
+            CGFloat t_diameter = self.bounds.size.width / 3.3;
             JSKEarthView *t_view = [[JSKEarthView alloc] initWithFrame:CGRectMake(0.0, 0.0, t_diameter, t_diameter)];
             t_view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
             t_view.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
