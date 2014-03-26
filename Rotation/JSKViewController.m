@@ -26,6 +26,7 @@
     JSKEarthMoonView *_earthMoonView;
     JSKSunEarthMoonView *_sunEarthMoonView;
     UILabel *_captionLabel;
+    BOOL _isAnimating;
 }
 
 - (void)tap:(id)sender;
@@ -105,11 +106,15 @@
 
 - (void)tap:(UIGestureRecognizer *)sender
 {
-        [self toggleCaption];
+    [self toggleCaption];
 }
 
 - (void)doubleTap:(__unused id)sender
 {
+    if (_isAnimating)
+        return;
+    _isAnimating = YES;
+    
     UIView *t_hideView = _earthMoonView;
     UIView *t_showView = _sunEarthMoonView;
     if (_earthMoonView.alpha == 0.0) {
@@ -137,17 +142,24 @@
                 _captionLabel.alpha = 1.0;
         } completion:^(BOOL finished){
             [self.view setNeedsDisplay];
+            _isAnimating = NO;
         }];
     }];
 }
 
 - (void)toggleCaption
 {
+    if (_isAnimating)
+        return;
+    _isAnimating = YES;
+    
     [UIView animateWithDuration:0.5 animations:^{
         if (_captionLabel.alpha == 0.0)
             _captionLabel.alpha = 1.0;
         else
             _captionLabel.alpha = 0.0;
+    } completion:^(BOOL finished){
+        _isAnimating = NO;
     }];
 }
 
