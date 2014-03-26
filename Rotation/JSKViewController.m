@@ -42,7 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -106,8 +105,6 @@
 
 - (void)tap:(UIGestureRecognizer *)sender
 {
-//    CGPoint t_location = [sender locationInView:self.view];
-//    if (t_location.y >= CGRectGetMidY(self.view.frame))
         [self toggleCaption];
 }
 
