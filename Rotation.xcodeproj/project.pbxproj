@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		934A1D5618DF181A00732EC7 /* JSKEarthMoonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A1D5518DF181A00732EC7 /* JSKEarthMoonView.m */; };
 		934A1D5918DF19A700732EC7 /* JSKSunEarthMoonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A1D5818DF19A700732EC7 /* JSKSunEarthMoonView.m */; };
+		934A4EE918E396AC00D433A6 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 934A4EE718E396AC00D433A6 /* LICENSE.txt */; };
+		934A4EEA18E396AC00D433A6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 934A4EE818E396AC00D433A6 /* README.md */; };
 		93B7EEBD18DD597200ACF240 /* JSKSunView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B7EEBC18DD597200ACF240 /* JSKSunView.m */; };
 		93B7EEC018DD599700ACF240 /* JSKSolarOrbitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B7EEBF18DD599700ACF240 /* JSKSolarOrbitView.m */; };
 		93F3C9F718DCF7A3008EB72F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F3C9F618DCF7A3008EB72F /* Foundation.framework */; };
@@ -45,6 +47,8 @@
 		934A1D5518DF181A00732EC7 /* JSKEarthMoonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKEarthMoonView.m; sourceTree = "<group>"; };
 		934A1D5718DF19A700732EC7 /* JSKSunEarthMoonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKSunEarthMoonView.h; sourceTree = "<group>"; };
 		934A1D5818DF19A700732EC7 /* JSKSunEarthMoonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKSunEarthMoonView.m; sourceTree = "<group>"; };
+		934A4EE718E396AC00D433A6 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		934A4EE818E396AC00D433A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		93B7EEBB18DD597200ACF240 /* JSKSunView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKSunView.h; sourceTree = "<group>"; };
 		93B7EEBC18DD597200ACF240 /* JSKSunView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSKSunView.m; sourceTree = "<group>"; };
 		93B7EEBE18DD599700ACF240 /* JSKSolarOrbitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSKSolarOrbitView.h; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 		93F3C9FD18DCF7A3008EB72F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				934A4EE718E396AC00D433A6 /* LICENSE.txt */,
+				934A4EE818E396AC00D433A6 /* README.md */,
 				93F3C9FE18DCF7A3008EB72F /* Rotation-Info.plist */,
 				93F3C9FF18DCF7A3008EB72F /* InfoPlist.strings */,
 				93F3CA0218DCF7A3008EB72F /* main.m */,
@@ -278,9 +284,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934A4EEA18E396AC00D433A6 /* README.md in Resources */,
 				93F3CA0D18DCF7A3008EB72F /* Main_iPad.storyboard in Resources */,
 				93F3CA1218DCF7A3008EB72F /* Images.xcassets in Resources */,
 				93F3CA0A18DCF7A3008EB72F /* Main_iPhone.storyboard in Resources */,
+				934A4EE918E396AC00D433A6 /* LICENSE.txt in Resources */,
 				93F3CA0118DCF7A3008EB72F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
